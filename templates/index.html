@@ -1,0 +1,84 @@
+﻿{% extends 'base.html' %} {% block main %} home {% endblock main %} 
+{% block homeactive %} active {% endblock homeactive %}
+{% block mhomeactive %} active {% endblock mhomeactive %}
+{% block title %} Home | Md Mahiuddin {% endblock title %}
+{% load static %} 
+
+{% block body %}
+<!-- Main Content Starts -->
+<section
+  class="
+    container-fluid
+    main-container
+    container-home
+    p-0
+    revealator-slideup revealator-once revealator-delay1
+  "
+>
+  <div class="color-block d-none d-lg-block"></div>
+  <div class="row home-details-container align-items-center">
+    <div class="col-lg-4 bg position-fixed d-none d-lg-block"></div>
+    <div
+      class="
+        col-12 col-lg-8
+        offset-lg-4
+        home-details
+        text-left text-sm-center text-lg-left
+      "
+    >
+      <div>
+        <img
+          src="{% static 'img/mo.png' %}"
+          class="img-fluid main-img-mobile d-none d-sm-block d-lg-none"
+          alt="my picture"
+        />
+        <h1 class="text-uppercase poppins-font">
+          I'm {{ authorPeronal.FullName }}. <br />
+          <span class="js-text-animation"></span>
+        </h1>
+        <p class="open-sans-font">
+          {{ authorPeronal.shortDesc }}
+        </p>
+        <a class="button" href="{% url 'About:About' %}">
+          <span class="button-text">more about me</span>
+          <span class="button-icon fa fa-arrow-right"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% for i in text_animate %}
+<input id="text_animate{{forloop.counter}}" type="hidden" value="{{ i.AnimateText }} " />
+{% endfor %}
+<input id="text_animatelen" type="hidden" value="{{ text_animatelen }} " />
+
+<!-- Main Content Ends -->
+{% endblock body %} 
+
+{% block scripts %}
+<script src="{% static 'js/typed.min.js' %}"></script>
+<!-- JS Plugins Init. -->
+<script>
+  var text_animatelen = parseInt($("#text_animatelen").val());
+  var index, text_ani;
+  var text_animate = [];
+
+  for (index = 1; index <= text_animatelen; index++) {
+    text_ani = $("#text_animate" + index).val();
+    text_animate[index - 1] = text_ani;
+  }
+  
+  // initialization of text animation (typing)
+  var typed = new Typed(".js-text-animation", {
+    strings: text_animate,
+    // strings: ["web designer", "web devloper", "Blogger"],
+    typeSpeed: 70,
+    loop: true,
+    backSpeed: 40,
+    backDelay: 2000,
+  });
+</script>
+{% endblock %}
+
+  

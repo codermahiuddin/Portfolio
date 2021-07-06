@@ -1,0 +1,290 @@
+{% extends 'base.html' %} {% block main %} about {% endblock main %} 
+{% block aboutactive %} active {% endblock aboutactive %}
+{% block maboutactive %} active {% endblock maboutactive %}
+{% load static %} 
+{% block title %} About | Md Mahiuddin {% endblock title %}
+{% block body %}
+<!-- Page Title Starts -->
+<section
+  class="
+    title-section
+    text-left text-sm-center
+    revealator-slideup revealator-once revealator-delay1
+  "
+>
+  <h1>ABOUT <span>ME</span></h1>
+  <span class="title-bg">Resume</span>
+</section>
+<!-- Page Title Ends -->
+<!-- Main Content Starts -->
+<section
+  class="main-content revealator-slideup revealator-once revealator-delay1"
+>
+  <div class="container">
+    <div class="row">
+      <!-- Personal Info Starts -->
+      <div class="col-12 col-lg-5 col-xl-6">
+        <div class="row">
+          <div class="col-12">
+            <h3 class="text-uppercase custom-title mb-0 ft-wt-600">
+              personal infos
+            </h3>
+          </div>
+          <div class="col-12 d-block d-sm-none">
+            <img
+              src="{% static 'img/img-mobile.jpg' %}"
+              class="img-fluid main-img-mobile"
+              alt="my picture"
+            />
+          </div>
+          <div class="col-6">
+            <ul class="about-list list-unstyled open-sans-font">
+              <li>
+                <span class="title">full name :</span>
+                <span
+                  class="
+                    value
+                    d-block d-sm-inline-block d-lg-block d-xl-inline-block
+                  "
+                  >{{ authorPeronal.FullName }}
+                </span>
+              </li>
+              <li>
+                <span class="title">Age :</span>
+                <span
+                  class="
+                    value
+                    d-block d-sm-inline-block d-lg-block d-xl-inline-block
+                  "
+                >
+                  {{ authorPeronal.age }}
+                </span>
+              </li>
+              <li>
+                <span class="title">Nationality :</span>
+                <span
+                  class="
+                    value
+                    d-block d-sm-inline-block d-lg-block d-xl-inline-block
+                  "
+                  >{{ authorPeronal.Nationality }}</span
+                >
+              </li>
+              <li>
+                <span class="title">Freelance :</span>
+                <span
+                  class="
+                    value
+                    d-block d-sm-inline-block d-lg-block d-xl-inline-block
+                  "
+                  >{{ authorPeronal.availableinfo }}</span
+                >
+              </li>
+              <li>
+                <span class="title">Github :</span>
+                <span
+                  class="
+                    value
+                    d-block d-sm-inline-block d-lg-block d-xl-inline-block
+                  "
+                  ><a target="_blank" href="{{ authorPeronal.Github }}"
+                    >Github</a
+                  ></span
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-6">
+            <ul class="about-list list-unstyled open-sans-font">
+              <li>
+                <span class="title">Address :</span>
+                <span
+                  class="
+                    value
+                    d-block d-sm-inline-block d-lg-block d-xl-inline-block
+                  "
+                  >{{ authorPeronal.Address }}</span
+                >
+              </li>
+              <li>
+                <span class="title">phone :</span>
+                <span
+                  class="
+                    value
+                    d-block d-sm-inline-block d-lg-block d-xl-inline-block
+                  "
+                >
+                  <a href="tel:{{ authorPeronal.Phone }}"
+                    >{{ authorPeronal.Phone }}</a
+                  >
+                </span>
+              </li>
+              <li>
+                <span class="title">Email :</span>
+                <span
+                  class="
+                    value
+                    d-block d-sm-inline-block d-lg-block d-xl-inline-block
+                  "
+                >
+                  <a href="mailto: {{ authorPeronal.Email }}">Mail Me</a>
+                </span>
+              </li>
+              <li>
+                <span class="title">langages :</span>
+                <span
+                  class="
+                    value
+                    d-block d-sm-inline-block d-lg-block d-xl-inline-block
+                  "
+                  >{{ authorPeronal.Langages }}</span
+                >
+              </li>
+              <li>
+                <span class="title">Linkdin :</span>
+                <span
+                  class="
+                    value
+                    d-block d-sm-inline-block d-lg-block d-xl-inline-block
+                  "
+                  ><a target="_blank" href="{{ authorPeronal.Linkdin }}"
+                    >Linkdin</a
+                  ></span
+                >
+              </li>
+            </ul>
+          </div>
+          
+          {% if cv %}
+            
+          <div class="col-12 mt-3">
+            <a class="button" href="{{ cv.mycv.url }}" download>
+              <span class="button-text">Download CV</span>
+              <span class="button-icon fa fa-download"></span>
+            </a>
+          </div>
+
+          {% endif %}
+        </div>
+      </div>
+      <!-- Personal Info Ends -->
+      <!-- Boxes Starts -->
+      <div class="col-12 col-lg-7 col-xl-6 mt-5 mt-lg-0">
+        <div class="row">
+          {% for i in boxes %}
+          <div class="col-6">
+            <div class="box-stats with-margin">
+              <h3 class="poppins-font position-relative">{{i.Number}}</h3>
+              <p class="open-sans-font m-0 position-relative text-uppercase">
+                {{ i.FlineText }}
+                <span class="d-block"> {{ i.LlineText }} </span>
+              </p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <!-- Boxes Ends -->
+    </div>
+    <hr class="separator" />
+    <!-- Skills Starts -->
+    <div class="row">
+      <div class="col-12">
+        <h3
+          class="
+            text-uppercase
+            pb-4 pb-sm-5
+            mb-3 mb-sm-0
+            text-left text-sm-center
+            custom-title
+            ft-wt-600
+          "
+        >
+          My Skills
+        </h3>
+      </div>
+
+      {% for i in skills %}
+      <div class="col-6 col-md-3 mb-3 mb-sm-5">
+        <div class="c100 p{{ i.SkillPercen }}">
+          <span>{{ i.SkillPercen }}%</span>
+          <div class="slice">
+            <div class="bar"></div>
+            <div class="fill"></div>
+          </div>
+        </div>
+        <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">
+          {{ i.SkillName }}
+        </h6>
+      </div>
+      {% endfor %}
+    </div>
+    <!-- Skills Ends -->
+    <hr class="separator mt-1" />
+    <!-- Experience & Education Starts -->
+    <div class="row">
+      <div class="col-12">
+        <h3
+          class="
+            text-uppercase
+            pb-5
+            mb-0
+            text-left text-sm-center
+            custom-title
+            ft-wt-600
+          "
+        >
+          Experience <span>&</span> Education
+        </h3>
+      </div>
+      <div class="col-lg-6 m-15px-tb">
+        <div class="resume-box">
+          <ul>
+            {% for i in expreance %}
+
+            <li>
+              <div class="icon">
+                <i class="fa fa-briefcase"></i>
+              </div>
+              <span class="time open-sans-font text-uppercase">
+                {{ i.Joindate }} - {% if i.Present %} {{ i.Present }} {% else %}
+                {{ i.Lastdate }} {% endif %}
+              </span>
+              <h5 class="poppins-font text-uppercase">
+                {{ i.Role }}
+                <span class="place open-sans-font">{{ i.CompanyName }}</span>
+              </h5>
+              <p class="open-sans-font">{{ i.shortDec }}</p>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-6 m-15px-tb">
+        <div class="resume-box">
+          <ul>
+            {% for i in education %}
+
+            <li>
+              <div class="icon">
+                <i class="fa fa-graduation-cap"></i>
+              </div>
+              <span class="time open-sans-font text-uppercase">
+                {{ i.Joindate }} - {% if i.Present %} {{ i.Present }} {% else %}
+                {{ i.Lastdate }} {% endif %}
+              </span>
+              <h5 class="poppins-font text-uppercase"> {{ i.degreeName }}
+                <span class="place open-sans-font">{{ i.schoolName }}</span>
+              </h5>
+              <p class="open-sans-font"> {{ i.shortDec }}  </p>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- Experience & Education Ends -->
+  </div>
+</section>
+<!-- Main Content Ends -->
+{% endblock body %}

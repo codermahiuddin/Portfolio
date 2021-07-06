@@ -1,0 +1,152 @@
+{% extends 'base.html' %} {% block main %} contact {% endblock main %} 
+{% block contatctactive %} active {% endblock contatctactive %}
+{% block mcontatctactive %} active {% endblock mcontatctactive %}
+{% load static %} 
+{% block title %} Contact | Md Mahiuddin {% endblock title %}
+{% block body %}
+
+<!-- Page Title Starts -->
+<section
+  class="
+    title-section
+    text-left text-sm-center
+    revealator-slideup revealator-once revealator-delay1
+  "
+>
+  <h1>get in <span>touch</span></h1>
+  <span class="title-bg">contact</span>
+</section>
+<!-- Page Title Ends -->
+<!-- Main Content Starts -->
+<section
+  class="main-content revealator-slideup revealator-once revealator-delay1"
+>
+  <div class="container">
+    <div class="row">
+      <!-- Left Side Starts -->
+      <div class="col-12 col-lg-4">
+        <h3 class="text-uppercase custom-title mb-0 ft-wt-600 pb-3">
+          Don't be shy !
+        </h3>
+        <p class="open-sans-font mb-3">
+          Feel free to get in touch with me. I am always open to discussing new
+          projects, creative ideas or opportunities to be part of your visions.
+        </p>
+        <p class="open-sans-font custom-span-contact position-relative">
+          <i class="fa fa-envelope-open position-absolute"></i>
+          <span class="d-block">mail me</span>{{ authorPeronal.Email }}
+        </p>
+        <p class="open-sans-font custom-span-contact position-relative">
+          <i class="fa fa-phone-square position-absolute"></i>
+          <span class="d-block">call me</span> {{ authorPeronal.Phone }}
+        </p>
+        <ul class="social list-unstyled pt-1 mb-5">
+          <li class="facebook">
+            <a title="Facebook" href="#"><i class="fa fa-facebook"></i></a>
+          </li>
+          <li class="twitter">
+            <a title="Twitter" href="#"><i class="fa fa-twitter"></i></a>
+          </li>
+          <li class="youtube">
+            <a title="Youtube" href="#"><i class="fa fa-youtube"></i></a>
+          </li>
+          <li class="dribbble">
+            <a title="Dribbble" href="#"><i class="fa fa-dribbble"></i></a>
+          </li>
+        </ul>
+      </div>
+      <!-- Left Side Ends -->
+      <!-- Contact Form Starts -->
+
+      <div class="col-12 col-lg-8">
+
+        <!-- {% if successmsg %}
+        <div
+          class="alert alert-success alert-dismissible fade show"
+          role="alert"
+        >
+          <strong> Your message sent successfully </strong>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close"
+          ></button>
+        </div>
+        {% endif %} -->
+
+        <form id="contactform" class="contactform" method="POST" action="/contact/">
+          {% csrf_token %}
+          <div class="contactform">
+            <div class="row">
+              <div class="col-12 col-md-4">
+                <input
+                  type="text"
+                  name="name"
+                  class="form-inputs"
+                  placeholder="YOUR NAME"
+                  required
+                />
+              </div>
+              <div class="col-12 col-md-4">
+                <input
+                  type="email"
+                  name="email"
+                  class="form-inputs"
+                  placeholder="YOUR EMAIL"
+                  required
+                />
+              </div>
+              <div class="col-12 col-md-4">
+                <input
+                  type="text"
+                  name="subject"
+                  class="form-inputs"
+                  placeholder="YOUR SUBJECT"
+                  required
+                />
+              </div>
+              <div class="col-12">
+                <textarea
+                  name="message"
+                  class="form-inputs"
+                  placeholder="YOUR MESSAGE"
+                  required
+                ></textarea>
+                <button type="submit" class="button form-inputs">
+                  <span class="button-text">Send Message</span>
+                  <span class="button-icon fa fa-send"></span>
+                </button>
+              </div>
+
+              <div class="col-12 form-message">
+                <span
+                  class="
+                    output_message
+                    text-center
+                    font-weight-600
+                    text-uppercase
+                  "
+                ></span>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- Contact Form Ends -->
+    </div>
+  </div>
+</section>
+
+{% endblock %} {% block scripts %}
+<script>
+  if (window.history.replaceState) {
+    window.history.replaceState(null, null, window.location.href);
+  }
+
+
+</script>
+{% endblock %}
+
+
+
