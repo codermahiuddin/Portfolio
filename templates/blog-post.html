@@ -1,87 +1,152 @@
 {% extends 'base.html' %} {% block main %} blog-post {% endblock main %} 
-{% block blogactive %} active {% endblock blogactive %}
-{% block mblogactive %} active {% endblock mblogactive %}
-{% load static %} 
-{% block title %} {{ post.title }} | Md Mahiuddin {% endblock title %}
-{% block body %}
+{% block blogactive %} active {% endblock blogactive %} {% block mblogactive %}
+active {% endblock mblogactive %} {% load static %} {% block title %} 
+{{ post.title }} | Md Mahiuddin {% endblock title %} {% block body %}
 <!-- Page Title Starts -->
-<section class="title-section text-left text-sm-center revealator-slideup revealator-once revealator-delay1">
-    <h1>my <span>blog</span></h1>
-    <span class="title-bg">posts</span>
+<section
+  class="
+    title-section
+    text-left text-sm-center
+    revealator-slideup revealator-once revealator-delay1
+  "
+>
+  <h1>my <span>blog</span></h1>
+  <span class="title-bg">posts</span>
 </section>
 <!-- Page Title Ends -->
 <!-- Main Content Starts -->
-<section class="main-content revealator-slideup revealator-once revealator-delay1">
-    <div class="container">
-        <div class="row">
-            <!-- Article Starts -->
-            <article class="col-12">
-                <!-- Meta Starts -->
-                <div class="meta open-sans-font">
-                    <span><i class="fa fa-user"></i> Mahiuddin </span>
-                    <span class="date"><i class="fa fa-calendar"></i> {{ post.time | date:"M d, Y" }} </span>
-                    <span><i class="fa fa-tags"></i> 
-                    
-                    {% for tag in post.tags.all %}
-                        {{ tag.name }},
-                    {% endfor %}
-                        
-                    </span>
-                </div>
-                <!-- Meta Ends -->
-                <!-- Article Content Starts -->
-                <h1 class="text-uppercase text-capitalize"> {{ post.title }} </h1>
-                <img src="{{ post.image.url }}" class="img-fluid" alt="Blog image"/>
-                <div class="blog-excerpt open-sans-font pb-5">
-                    {{ post.description|safe }}
-                </div>
-                <!-- Article Content Ends -->
-            </article>
-            <!-- Article Ends -->
+<section
+  class="main-content revealator-slideup revealator-once revealator-delay1"
+>
+  <div class="container">
+    <div class="row">
+      <!-- Article Starts -->
+      <article class="col-12">
+        <!-- Meta Starts -->
+        <div class="meta open-sans-font">
+          {% if messages %} {% for message in messages %}
+          <div
+            class="alert alert-{{ message.tags }} alert-dismissible fade show"
+            role="alert"
+          >
+            <strong>{{ message }}</strong>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="alert"
+              aria-label="Close"
+            >
+              <svg
+                aria-hidden="true"
+                class="mb-0"
+                width="14"
+                height="14"
+                viewBox="0 0 18 18"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill="currentColor"
+                  d="M11.5,9.5l5-5c0.2-0.2,0.2-0.6-0.1-0.9l-1-1c-0.3-0.3-0.7-0.3-0.9-0.1l-5,5l-5-5C4.3,2.3,3.9,2.4,3.6,2.6l-1,1 C2.4,3.9,2.3,4.3,2.5,4.5l5,5l-5,5c-0.2,0.2-0.2,0.6,0.1,0.9l1,1c0.3,0.3,0.7,0.3,0.9,0.1l5-5l5,5c0.2,0.2,0.6,0.2,0.9-0.1l1-1 c0.3-0.3,0.3-0.7,0.1-0.9L11.5,9.5z"
+                />
+              </svg>
+            </button>
+          </div>
+          {% endfor %} {% endif %}
 
-            <div class="col-12 comment">
-                <form id="contactform" class="contactform" method="POST" action="/contact/">
-                    {% csrf_token %}
-                    <div class="contactform">
-                      <div class="row">
-                        <div class="col-12 col-md-6">
-                          <input
-                            type="text"
-                            name="name"
-                            class="form-inputs"
-                            placeholder="YOUR NAME"
-                            required
-                          />
-                        </div>
-                        <div class="col-12 col-md-6">
-                          <input
-                            type="email"
-                            name="email"
-                            class="form-inputs"
-                            placeholder="YOUR EMAIL"
-                            required
-                          />
-                        </div>
+          <span><i class="fa fa-user"></i> Mahiuddin </span>
+          <span class="date"
+            ><i class="fa fa-calendar"></i> {{ post.time | date:"M d, Y" }}
+          </span>
+          <span
+            ><i class="fa fa-tags"></i>
 
-                        <div class="col-12">
-                          <textarea
-                            name="message"
-                            class="form-inputs"
-                            placeholder="YOUR MESSAGE"
-                            required
-                          ></textarea>
-                        </div>
-                        <button type="submit" class="button form-inputs ml-auto">
-                          <span class="button-text">Comment</span>
-                          <span class="button-icon fa fa-send"></span>
-                        </button>
-        
-                      </div>
-                    </div>
-                  </form>
-            </div>
+            {% for tag in post.tags.all %} {{ tag.name }}, {% endfor %}
+          </span>
         </div>
+        <!-- Meta Ends -->
+        <!-- Article Content Starts -->
+        <h1 class="text-uppercase text-capitalize">{{ post.title }}</h1>
+        <img src="{{ post.image.url }}" class="img-fluid" alt="Blog image" />
+        <div class="blog-excerpt open-sans-font pb-5">
+          {{ post.description|safe }}
+        </div>
+        <!-- Article Content Ends -->
+
+        <!-- Comment starts -->
+        <div class="pt-2 mb-11">
+          <div class="mb-4">
+            <h3>{{ comments|length }} Comments</h3>
+          </div>
+
+          <ul class="list-unstyled">
+            {% for comment in comments %}
+            <hr>
+            <!-- Comment -->
+            <li class="mb-2">
+              <div class="media align-items-center mb-2">
+                <div class="media-body">
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <span class="h5 mb-0">{{ comment.name }}</span>
+                    <small class="text-gray">{{ comment.creation | timesince }} ago</small>
+                  </div>
+                </div>
+              </div>
+
+              <p> {{ comment.body }}</p>
+            </li>
+            <!-- End Comment -->
+            {% endfor %}
+          </ul>
+        </div>
+
+        <!-- Comment Ends  -->
+      </article>
+      <!-- Article Ends -->
+
+      <div class="col-12 comment mt-5">
+        <form class="commentform" method="POST" action="">
+          {% csrf_token %}
+          <div class="commentform">
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <input
+                  type="text"
+                  name="name"
+                  class="form-inputs"
+                  placeholder="YOUR NAME"
+                  required
+                />
+              </div>
+              <div class="col-12 col-md-6">
+                <input
+                  type="email"
+                  name="email"
+                  class="form-inputs"
+                  placeholder="YOUR EMAIL"
+                  required
+                />
+              </div>
+
+              <div class="col-12">
+                <textarea
+                  name="body"
+                  class="form-inputs"
+                  placeholder="YOUR MESSAGE"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="button form-inputs ml-auto">
+                <span class="button-text">Comment</span>
+                <span class="button-icon fa fa-send"></span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
 </section>
 
 {% endblock %}
