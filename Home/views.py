@@ -1,6 +1,6 @@
 from django.views.generic import TemplateView
 from .models import TextAnimate
-from About.models import AuthorPeronal
+
 # Create your views here.
 
 class HomeView(TemplateView):

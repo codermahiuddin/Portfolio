@@ -29,11 +29,9 @@ class AuthorPeronal(models.Model):
         import datetime
         return int((datetime.date.today() - self.BrithInfo).days / 365.25)
 
-
 class CvUpload(models.Model):
     name = models.CharField(default='Md Mahiuddin', max_length=50)
     mycv = models.FileField(upload_to='Cv/')
-
 
 class Boxes(models.Model):
     Number = models.IntegerField()

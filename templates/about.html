@@ -1,8 +1,9 @@
 {% extends 'base.html' %} {% block main %} about {% endblock main %} 
-{% block aboutactive %} active {% endblock aboutactive %}
-{% block maboutactive %} active {% endblock maboutactive %}
+{% block aboutactive %} active {% endblock aboutactive %} 
+{% block maboutactive %} active {% endblock maboutactive %} 
+{% block title %} About | Md Mahiuddin {% endblock title %} 
 {% load static %} 
-{% block title %} About | Md Mahiuddin {% endblock title %}
+
 {% block body %}
 <!-- Page Title Starts -->
 <section
@@ -32,7 +33,7 @@
           </div>
           <div class="col-12 d-block d-sm-none">
             <img
-              src="{% static 'img/img-mobile.jpg' %}"
+              src="{% static 'img/mo.png' %}"
               class="img-fluid main-img-mobile"
               alt="my picture"
             />
@@ -154,11 +155,20 @@
               </li>
             </ul>
           </div>
-          
+
           {% if cv %}
-            
+
           <div class="col-12 mt-3">
             <a class="button" href="{{ cv.mycv.url }}" download>
+              <span class="button-text">Download CV</span>
+              <span class="button-icon fa fa-download"></span>
+            </a>
+          </div>
+
+          {% else %}
+
+          <div class="col-12 mt-3">
+            <a class="button" href="#" download>
               <span class="button-text">Download CV</span>
               <span class="button-icon fa fa-download"></span>
             </a>
@@ -273,10 +283,11 @@
                 {{ i.Joindate }} - {% if i.Present %} {{ i.Present }} {% else %}
                 {{ i.Lastdate }} {% endif %}
               </span>
-              <h5 class="poppins-font text-uppercase"> {{ i.degreeName }}
+              <h5 class="poppins-font text-uppercase">
+                {{ i.degreeName }}
                 <span class="place open-sans-font">{{ i.schoolName }}</span>
               </h5>
-              <p class="open-sans-font"> {{ i.shortDec }}  </p>
+              <p class="open-sans-font">{{ i.shortDec }}</p>
             </li>
             {% endfor %}
           </ul>

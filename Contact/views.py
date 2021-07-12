@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Contact
-from About.models import AuthorPeronal
+
 
 def ContactView(request):
     if request.method == 'POST':

@@ -52,6 +52,7 @@
         /* ----------------------------------------------------------- */
 
     $(".nav-close").on("click", function () {
+      console.log('Done nav close');
       $("#navbar-collapse-toggle").removeClass("hide-header");
     });
     $(".nav-prev").on("click", function () {

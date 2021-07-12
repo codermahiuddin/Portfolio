@@ -177,14 +177,12 @@
                 <!-- loop images here -->
                 <div class="carousel-item active">
                   <img src="{{ por.ProjectImage.url }}" />
-                  <!-- alt="slide{% if forloop.counter > 1 %}{{forloop.counter|add:'118'}}{% else %}{{forloop.counter0}}{% endif %}" -->
                 </div>
 
                 {% for img in allimages|index:forloop.counter0 %}
 
                 <div class="carousel-item">
                   <img src="{{ img.image.url }}" />
-                  <!-- alt="slide{% if forloop.parentloop.counter > 1 %} {{forloop.counter|add:'120'}}{% else %}{{forloop.counter}}{% endif %}" -->
                 </div>
 
                 {% endfor %}
