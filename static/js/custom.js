@@ -5,26 +5,7 @@
   /*  FUNCTION TO STOP LOCAL AND YOUTUBE VIDEOS IN SLIDESHOW
     /* ----------------------------------------------------------- */
 
-  function stop_videos() {
-    var video = document.getElementById("video");
-    if (video.paused !== true && video.ended !== true) {
-      video.pause();
-    }
-    $(".youtube-video")[0].contentWindow.postMessage(
-      '{"event":"command","func":"' + "pauseVideo" + '","args":""}',
-      "*"
-    );
-  }
-
   $(document).ready(function () {
-    /* ----------------------------------------------------------- */
-    /*  STOP VIDEOS
-        /* ----------------------------------------------------------- */
-
-    $(".slideshow nav span").on("click", function () {
-      stop_videos();
-    });
-
     /* ----------------------------------------------------------- */
     /*  FIX REVEALATOR ISSUE AFTER PAGE LOADED
         /* ----------------------------------------------------------- */
@@ -50,16 +31,16 @@
     /* ----------------------------------------------------------- */
     /*  SHOW HEADER WHEN PORTFOLIO SLIDESHOW CLOSED
         /* ----------------------------------------------------------- */
-
     $(".nav-close").on("click", function () {
-      console.log('Done nav close');
       $("#navbar-collapse-toggle").removeClass("hide-header");
     });
+
     $(".nav-prev").on("click", function () {
       if ($(".slideshow ul li:first-child").hasClass("current")) {
         $("#navbar-collapse-toggle").removeClass("hide-header");
       }
     });
+
     $(".nav-next").on("click", function () {
       if ($(".slideshow ul li:last-child").hasClass("current")) {
         $("#navbar-collapse-toggle").removeClass("hide-header");
@@ -89,18 +70,35 @@
         method: form.attr("method"),
         data: form.serialize(),
         success: function (result) {
-                                              
-            $(".form-inputs").css("display", "none");
-            $(".contactform").find(".output_message").addClass("success");
-            $(".output_message").text("Message Sent!");
-                     
+          $(".form-inputs").css("display", "none");
+          $(".contactform").find(".output_message").addClass("success");
+          $(".output_message").text("Message Sent!");
         },
       });
-      this.reset() 
+      this.reset();
       return false;
     });
+  });
 
+  function stop_videos() {
+    var video = document.getElementById("video");
+    if (video.paused !== true && video.ended !== true) {
+      video.pause();
+    }
+    $(".youtube-video")[0].contentWindow.postMessage(
+      '{"event":"command","func":"' + "pauseVideo" + '","args":""}',
+      "*"
+    );
+  }
 
+  $(document).ready(function () {
+    /* ----------------------------------------------------------- */
+    /*  STOP VIDEOS
+        /* ----------------------------------------------------------- */
+
+    $(".slideshow nav span").on("click", function () {
+      stop_videos();
+    });
   });
 
   $(document).keyup(function (e) {
@@ -108,14 +106,14 @@
     /*  KEYBOARD NAVIGATION IN PORTFOLIO SLIDESHOW
         /* ----------------------------------------------------------- */
     if (e.keyCode === 27) {
-      stop_videos();
       $(".close-content").click();
       $("#navbar-collapse-toggle").removeClass("hide-header");
+      stop_videos();
     }
     if (e.keyCode === 37 || e.keyCode === 39) {
-      stop_videos();
       $(".close-content").click();
       $("#navbar-collapse-toggle").removeClass("hide-header");
+      stop_videos();
     }
   });
 })(jQuery);

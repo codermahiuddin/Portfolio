@@ -301,7 +301,7 @@ hr.separator {
 }
 
 .home .home-details h1 {
-  font-size: 50px;
+  font-size: 48px;
   line-height: 62px;
   font-weight: 700;
   margin: 18px 0 10px;
@@ -348,7 +348,7 @@ hr.separator {
   padding-bottom: 20px;
 }
 
-.about .about-list li a{
+.about .about-list li a {
   color: #ffffff;
 }
 
@@ -828,7 +828,7 @@ hr.separator {
 .contact .contactform input[type="text"],
 .contact .contactform input[type="email"],
 .blog-post .contactform input[type="text"],
-.blog-post .contactform input[type="email"]{
+.blog-post .contactform input[type="email"] {
   border: 1px solid #111;
   width: 100%;
   background: #252525;
@@ -839,10 +839,10 @@ hr.separator {
   outline: none !important;
   transition: 0.3s;
 }
- .commentform input[type="text"],
+.commentform input[type="text"],
 .commentform input[type="email"],
- .commentform input[type="text"],
-.commentform input[type="email"]{
+.commentform input[type="text"],
+.commentform input[type="email"] {
   border: 1px solid #111;
   width: 100%;
   background: #252525;
@@ -1003,7 +1003,7 @@ hr.separator {
 /* Blog Post */
 
 .blog-post article,
-.blog-post .comment{
+.blog-post .comment {
   max-width: 700px;
   margin: 0 auto;
 }
