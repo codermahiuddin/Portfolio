@@ -8,7 +8,7 @@ local_settings.py
 db.sqlite3
 media/
 portfolio2.html
-
+staticfiles/
 
 # Backup files # 
 *.bak 

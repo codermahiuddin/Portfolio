@@ -140,9 +140,9 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media/'
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dngbvn8nd',
-    'API_KEY': '288212928965189',
-    'API_SECRET': 'DYpHEPSxidCvodv6qQ8ywnYMGno'
+    'CLOUD_NAME' : config('CLOUD_NAME'),
+    'API_KEY': config('API_KEY'),
+    'API_SECRET': config('API_SECRET')
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
