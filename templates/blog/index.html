@@ -125,7 +125,7 @@
                     <div class="card-columns">
                         
 
-						{% for post in posts %}
+						{% for post in page_obj %}
 						  
 						
                         <!--Post-1-->
@@ -172,23 +172,23 @@
                     <!--pagination-->
                     <div class="pagination mt-30">
                         <ul class="list-inline">
+
+                            {% load l10n %}           
+                            {% for post in page_obj.paginator.page_range %}
+                            
+                            {% if page_obj.number == post  %}
                             <li class="active">
-                                <a href="#">1</a>
+                                <a href="?page={{ post }}">{{ post | localize }}</a>
                             </li>
+                            {% else %}
                             <li>
-                                <a href="#">2</a>
+                                <a href="?page={{ post }}">{{ post }}</a>
                             </li>
-                            <li>
-                                <a href="#">3</a>
-                            </li>
-                            <li>
-                                <a href="#">4</a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="arrow_carrot-2right"></i>
-                                </a>
-                            </li>
+                            {% endif %}
+                            {% endfor %}
+                          
+                            
+
                         </ul>
                     </div>
                 </div>

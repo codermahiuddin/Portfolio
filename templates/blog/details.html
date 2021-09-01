@@ -247,7 +247,14 @@
                                    
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" name="name"  id="name" class="form-control" placeholder="Name*" required="required">
+                                        <input 
+                                        type="text" 
+                                        class="form-control"
+                                        name="name"  
+                                        id="inputName"  
+                                        placeholder="Name*" 
+                                        aria-label="Name"
+                                        required="required">
                                     </div>
                                 </div>
                               
@@ -255,7 +262,15 @@
 
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <textarea name="message" name="body" id="message" cols="30" rows="5" class="form-control" placeholder="Message*" required="required"></textarea>
+                                        <textarea
+                                        class="form-control"
+                                        name="body"
+                                        rows="7"
+                                        id="descriptionTextarea"
+                                        placeholder="Comment*"
+                                        required
+                                        data-msg="Please enter your message."
+                                    ></textarea>
                                     </div>
                                 </div>
                              
@@ -275,14 +290,14 @@
                     <div class="widget">
                         <div class="widget-author">
                             <a href="author.html" class="image">
-                                <img src="assets/img/author/1.jpg" alt="">
+                                <img src="{% static "tamplates/assets/img/author/jonaid.jpg" %}" alt="">
                             </a>
                             <h6>
-                                <span>Hi, I'm David Smith</span>
+                                <span>Hi, I'm Jonaid Ahmad </span>
                             </h6>
                             <p>
 
-                            I'm David Smith, husband and father ,
+                            I'm Jonaid Ahmad, husband and father ,
                              I love Photography,travel and nature. I'm working as a writer and blogger with experience
                             of 5 years until now.
                         </p>
@@ -295,21 +310,13 @@
                                             <i class="fab fa-facebook"></i>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="#" class="color-instagram">
-                                            <i class="fab fa-instagram"></i>
-                                        </a>
-                                    </li>
+                                   
                                     <li>
                                         <a href="#" class="color-twitter">
                                             <i class="fab fa-twitter"></i>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="#" class="color-youtube">
-                                            <i class="fab fa-youtube"></i>
-                                        </a>
-                                    </li>
+                                   
                                     <li>
                                         <a href="#" class="color-pinterest">
                                             <i class="fab fa-pinterest"></i>
@@ -327,64 +334,23 @@
                             <h5>Latest Posts</h5>
                         </div>
                         <ul class="widget-latest-posts">
-
+                            {% for post in similar_post %}
+                              
+                            
                             <li class="last-post">
                                 <div class="image">
                                     <a href="post-default.html">
-                                        <img src="assets/img/latest/1.jpg" alt="...">
+                                        <img src="{{ post.thumbnail.url }} " alt="...">
                                     </a>
                                 </div>
                                 <div class="nb">1</div>
                                 <div class="content">
-                                    <p><a href="post-default.html">5 Things I Wish I Knew Before Traveling to Malaysia</a></p>
-                                    <small><span class="icon_clock_alt"></span> January 15, 2021</small>
+                                    <p><a href="post-default.html">{{ post.short_description }} </a></p>
+                                    <small><span class="icon_clock_alt"></span>{{ post.creation }} </small>
                                 </div>
                             </li>
-                            <li class="last-post">
-                                <div class="image">
-                                    <a href="post-default.html">
-                                    <img src="assets/img/latest/2.jpg" alt="...">
-                                    </a> 
-                                </div>
-                                <div class="nb">2</div>
-                                <div class="content">
-                                    <p>
-                                        <a href="post-default.html">Everything you need to know about visiting the Amazon.</a>
-                                    </p>
-                                    <small>
-                                        <span class="icon_clock_alt"></span> January 15, 2021</small>
-                                </div>
-                            </li>
-                            <li class="last-post">
-                                <div class="image">
-                                    <a href="post-default.html">
-                                    <img src="assets/img/latest/3.jpg" alt="...">
-                                    </a>
-                                </div>
-                                <div class="nb">3</div>
-                                <div class="content">
-                                    <p>
-                                        <a href="post-default.html">How to spend interesting vacation after hard work?</a>
-                                    </p>
-                                    <small>
-                                        <span class="icon_clock_alt"></span> January 15, 2021</small>
-                                </div>
-                            </li>
-                            <li class="last-post">
-                                <div class="image">
-                                    <a href="post-default.html">
-                                     <img src="assets/img/latest/4.jpg" alt="...">
-                                    </a>
-                                </div>
-                                <div class="nb">4</div>
-                                <div class="content">
-                                    <p>
-                                        <a href="post-default.html">10 Best and Most Beautiful Places to Visit in Italy</a>
-                                    </p>
-                                    <small>
-                                        <span class="icon_clock_alt"></span> January 15, 2021</small>
-                                </div>
-                            </li>
+                            {% endfor %}
+                            
                         </ul>
                     </div>
                     <!--/-->

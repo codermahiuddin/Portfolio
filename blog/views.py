@@ -12,9 +12,13 @@ from django.shortcuts import redirect
 def blog_list (request):
     posts=Post.objects.all()
 
+    paginator=Paginator(posts,3)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
     context ={
         'posts':posts,
+        'page_obj':page_obj,
     }
     return render (request,'blog/index.html',context)
 
@@ -22,7 +26,10 @@ def blog_list (request):
 def blog_details (request,slug):
     post=Post.objects.get (slug=slug)
     comments = post.comments.all()
+    similar_post = post.tages.similar_objects()[:4]
 
+     
+    
     if request.method == 'POST':
         comment_form = CommentForm(request.POST)
         if comment_form.is_valid():
@@ -38,6 +45,8 @@ def blog_details (request,slug):
 
     context ={
         'post':post,
-        'comments':comments
+        'comments':comments,
+        
+        'similar_post':similar_post,
     }
     return render (request,'blog/details.html',context)

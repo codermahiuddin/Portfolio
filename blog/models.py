@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from taggit.managers import TaggableManager
 # Create your models here.
 
 class Post (models.Model):
@@ -8,6 +9,7 @@ class Post (models.Model):
     thumbnail= models.ImageField(upload_to ='blog/photo/')
     description = models.TextField()
     short_description =models.TextField()
+    tages= TaggableManager()
     creation = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
