@@ -361,22 +361,17 @@
                             <h5>Categories</h5>
                         </div>
                         <ul class="widget-categories">
+                            {% for category in categories %}
+                              
+                            
                             <li>
-                                <a href="#" class="categorie">Livestyle</a>
-                                <span class="ml-auto">22 Posts</span>
+                                <a href="" class="categorie">{{ category.name }} </a>
+                                
                             </li>
-                            <li>
-                                <a href="#" class="categorie">Travel</a>
-                                <span class="ml-auto">18 Posts</span>
-                            </li>
-                            <li>
-                                <a href="#" class="categorie">Food</a>
-                                <span class="ml-auto">14 Posts</span>
-                            </li>
-                            <li>
-                                <a href="#" class="categorie">fashion</a>
-                                <span class="ml-auto">10 Posts</span>
-                            </li>
+                            {% endfor %}
+                          
+                         
+                           
                         </ul>
                     </div><!--/-->
                     
