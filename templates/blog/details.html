@@ -19,14 +19,14 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" >
     <!-- CSS Plugins -->
-    <link rel="stylesheet" href="{% static "tamplates/assets/css/all.css" %}">
-    <link rel="stylesheet" href="{% static "tamplates/assets/css/elegant-font-icons.css" %}">
-    <link rel="stylesheet" href="{% static "tamplates/assets/css/bootstrap.min.css" %}">
-    <link rel="stylesheet" href="{% static "tamplates/assets/css/owl.carousel.css" %}">
+    <link rel="stylesheet" href="{% static 'tamplates/assets/css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'tamplates/assets/css/elegant-font-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'tamplates/assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'tamplates/assets/css/owl.carousel.css' %}">
 
     <!-- main style -->
-    <link rel="stylesheet" href="{% static "tamplates/assets/css/style.css" %}">
-    <link rel="stylesheet" href="{% static "tamplates/assets/css/custom.css" %}">
+    <link rel="stylesheet" href="{% static 'tamplates/assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'tamplates/assets/css/custom.css' %}">
 </head>
 
 <body>
@@ -42,11 +42,10 @@
             <!--logo-->
             <div class="logo">
                 <a href="index.html">
-                    <img src="assets/img/logo-dark.png" alt="" class="logo-dark">
-                    <img src="assets/img/logo-white.png" alt="" class="logo-white">
+                    <img src="{% static 'tamplates/assets/img/logo-dark.png' %}" alt="" class="logo-dark">
+                    <img src="{% static 'tamplates/assets/img/logo-white.png' %}" alt="" class="logo-white">
                 </a>
-            </div>
-            <!--/-->
+            </div><!--/-->
     
             <!--navbar-collapse-->
             <div class="collapse navbar-collapse" id="main_nav">
@@ -290,7 +289,7 @@
                     <div class="widget">
                         <div class="widget-author">
                             <a href="author.html" class="image">
-                                <img src="{% static "tamplates/assets/img/author/jonaid.jpg" %}" alt="">
+                                <img src="{% static 'tamplates/assets/img/author/jonaid.jpg' %}" alt="">
                             </a>
                             <h6>
                                 <span>Hi, I'm Jonaid Ahmad </span>
@@ -463,19 +462,18 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" ></script> 
 
-     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-     <script src="{% static "tamplates/assets/js/jquery-3.5.0.min.js" %}"></script>
-     <script src="{% static "tamplates/assets/js/popper.min.js" %}"></script>
-     <script src="{% static "tamplates/assets/js/bootstrap.min.js" %}"></script>
- 
-     <!-- JS Plugins  -->
-     <script src="{% static "tamplates/assets/js/ajax-contact.js" %}"></script>
-     <script src="{% static "tamplates/assets/js/owl.carousel.min.js" %}"></script>
-     <script src="{% static "tamplates/assets/js/switch.js" %}"></script>
-     
-     <!-- JS main  -->
-     <script src="{% static "tamplates/assets/js/main.js" %}"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{% static 'tamplates/assets/js/jquery-3.5.0.min.js' %}"></script>
+    <script src="{% static 'tamplates/assets/js/popper.min.js' %}"></script>
+    <script src="{% static 'tamplates/assets/js/bootstrap.min.js' %}"></script>
 
+    <!-- JS Plugins  -->
+    <script src="{% static 'tamplates/assets/js/ajax-contact.js' %}"></script>
+    <script src="{% static 'tamplates/assets/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'tamplates/assets/js/switch.js' %}"></script>
+    
+    <!-- JS main  -->
+    <script src="{% static 'tamplates/assets/js/main.js' %}"></script>
 
 </body>
 </html>
